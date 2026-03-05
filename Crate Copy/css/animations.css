@@ -1,0 +1,107 @@
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(0); }
+    to { transform: translateY(100%); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes checkmark {
+    0% { stroke-dashoffset: 50; }
+    100% { stroke-dashoffset: 0; }
+}
+
+@keyframes spaceBarGrow {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+}
+
+@keyframes spaceBarDrop {
+    0% { transform: scaleY(0.7); opacity: 0.9; }
+    60% { transform: scaleY(1.02); opacity: 1; }
+    100% { transform: scaleY(1); opacity: 1; }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes shimmerPulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+@keyframes navTabBounce {
+    0% { transform: scale(1); }
+    40% { transform: scale(0.88); }
+    70% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes tabFilterPress {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.96); }
+    100% { transform: scale(1); }
+}
+
+.anim-slide-up {
+    animation: slideUp 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.anim-slide-down {
+    animation: slideDown 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.anim-fade-in {
+    animation: fadeIn 0.2s ease-out;
+}
+
+.anim-scale-in {
+    animation: scaleIn 0.25s ease-out;
+}
+
+.anim-pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Respect user preference for reduced motion (WCAG 2.2) */
+@media (prefers-reduced-motion: reduce) {
+    .anim-slide-up,
+    .anim-slide-down,
+    .anim-fade-in,
+    .anim-scale-in,
+    .anim-pulse,
+    .nav-tab.nav-tab-bounce,
+    .tab-underline.tab-underline-press,
+    .source-toggle-btn.source-toggle-press,
+    .source-pill-btn.source-pill-press {
+        animation: none;
+    }
+    .expand-icon,
+    .price-chevron {
+        transition: none;
+    }
+}

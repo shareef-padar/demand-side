@@ -1,0 +1,146 @@
+:root {
+    /* Primary */
+    --color-primary-50: #F3F0FF;
+    --color-primary-100: #E0DBFF;
+    --color-primary-200: #C1B7FF;
+    --color-primary-300: #A18EFF;
+    --color-primary-400: #8B72FF;
+    --color-primary-500: #7957FF;
+    --color-primary-600: #6545E0;
+    --color-primary-700: #5134C0;
+    --color-primary-800: #3D27A0;
+    --color-primary-900: #2C1D7A;
+
+    /* Navy */
+    --color-navy-800: #131E33;
+    --color-navy-900: #0a1628;
+
+    /* Orange */
+    --color-orange-50: #FFF4EB;
+    --color-orange-100: #FFE0C2;
+    --color-orange-500: #FF7400;
+    --color-orange-600: #E06600;
+
+    /* Green */
+    --color-green-50: #E6F9F2;
+    --color-green-100: #CCF3E5;
+    --color-green-500: #00B26F;
+    --color-green-600: #009D62;
+
+    /* Red */
+    --color-red-50: #FFF0F0;
+    --color-red-100: #FFD6D8;
+    --color-red-500: #FF383F;
+    --color-red-600: #E02E35;
+
+    /* Blue */
+    --color-blue-50: #EBF4FD;
+    --color-blue-100: #C7DFFA;
+    --color-blue-500: #2680EB;
+    --color-blue-600: #1C6DD0;
+
+    /* Text / Neutral */
+    --color-text-50: #F5F7FA;
+    --color-text-100: #E4E8ED;
+    --color-text-200: #C8CFD8;
+    --color-text-300: #A0AAB8;
+    --color-text-400: #7A8696;
+    --color-text-500: #62748E;
+    --color-text-600: #445064;
+    --color-text-700: #323E50;
+    --color-text-800: #1E2A3A;
+    --color-text-900: #0F172B;
+
+    /* Teal Brand */
+    --color-teal-500: #40BCAA;
+    --color-teal-600: #009E93;
+    --color-teal-700: #00857C;
+
+    /* Alert Row Tints (Figma: all alerts use orange) */
+    --color-alert-bg: #FFF5ED;
+    --color-alert-border: #FFE0C7;
+    --color-alert-text: #6B3100;
+
+    /* Secondary (teal tint for icons) */
+    --color-secondary-50: #F0FFFE;
+    --color-secondary-100: #C7F5F0;
+    --color-secondary-500: #40BCAA;
+
+    /* Icon Badge Backgrounds */
+    --color-icon-blue-bg: #EBF4FD;
+    --color-icon-green-bg: #E6F9F2;
+
+    /* White */
+    --color-white: #FFFFFF;
+
+    /* Typography */
+    --font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+    --fw-extrabold: 800;
+
+    /* Accessible scale: min 12px (0.75rem) per WCAG 2.1 */
+    --fs-xs: 0.75rem;
+    --fs-sm: 0.875rem;
+    --fs-base: 1rem;
+    --fs-md: 1.0625rem;
+    --fs-lg: 1.125rem;
+    --fs-xl: 1.25rem;
+    --fs-2xl: 1.375rem;
+    --fs-3xl: 1.5rem;
+    --fs-4xl: 1.75rem;
+
+    /* Line heights: 1.5 min for body per WCAG */
+    --lh-tight: 1.25;
+    --lh-normal: 1.5;
+    --lh-relaxed: 1.6;
+
+    /* Spacing (0.25rem / 4px grid) */
+    --sp-1: 0.25rem;
+    --sp-2: 0.5rem;
+    --sp-3: 0.75rem;
+    --sp-4: 1rem;
+    --sp-5: 1.25rem;
+    --sp-6: 1.5rem;
+    --sp-8: 2rem;
+    --sp-10: 2.5rem;
+    --sp-12: 3rem;
+    --sp-16: 4rem;
+
+    /* Radii */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.25rem;
+    --radius-full: 624.9375rem;
+
+    /* Shadows */
+    --shadow-xs: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.08), 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.07), 0 0.125rem 0.25rem rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 0.625rem 0.9375rem rgba(0, 0, 0, 0.08), 0 0.25rem 0.375rem rgba(0, 0, 0, 0.04);
+    --shadow-sheet: 0 -0.25rem 1.5rem rgba(0, 0, 0, 0.15);
+
+    /* Z-index */
+    --z-base: 1;
+    --z-header: 100;
+    --z-nav: 200;
+    --z-overlay: 300;
+    --z-sheet: 400;
+    --z-toast: 500;
+
+    /* Safe areas */
+    --safe-top: env(safe-area-inset-top, 0);
+    --safe-bottom: env(safe-area-inset-bottom, 0);
+
+    /* Layout */
+    --nav-height: 4rem;
+    --header-height: 3.5rem;
+
+    /* Breakpoints (for reference in media queries) */
+    --bp-sm: 30rem;
+    --bp-md: 48rem;
+    --bp-lg: 64rem;
+}

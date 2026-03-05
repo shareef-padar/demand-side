@@ -1,0 +1,16 @@
+{
+  "name": "cargo-connect-design-system",
+  "version": "1.0.0",
+  "description": "Design system extracted from Cargo Connect - CSS, components, and layouts",
+  "type": "module",
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "@phosphor-icons/react": "^2.0.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.2.1",
+    "@tailwindcss/postcss": "^4.2.1",
+    "postcss": "^8.5.8",
+    "autoprefixer": "^10.4.27"
+  }
+}

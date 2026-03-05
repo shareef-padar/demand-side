@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Cargo — Warehouse Booking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Crate Copy/css/design-system.css">
+  <link rel="stylesheet" href="css/warehouse-booking.css">
+</head>
+<body>
+
+<div class="phone-frame">
+  <div class="status-bar">
+    <span>9:41</span>
+    <span>📶 🔋</span>
+  </div>
+
+  <!-- SCREEN 1: Space Selection + Warehouse Listing (combined) -->
+  <div class="screen active" id="screen1">
+    <div class="logo-area">
+      <div class="logo-icon">🏭</div>
+      <h2>Find Your Warehouse</h2>
+      <p>Powered by Cargo — Sharjah & Dubai</p>
+    </div>
+    <div class="content">
+      <div class="card">
+        <div class="section-title">How much space do you need?</div>
+        <div class="sqm-input-wrap">
+          <input class="sqm-input" id="sqmInput" type="number" placeholder="0" min="1" max="200" inputmode="numeric" />
+          <span class="sqm-unit">sqm</span>
+        </div>
+        <div class="size-presets">
+          <div class="preset" data-preset="25">
+            <div class="size">25 sqm</div>
+            <div class="label">Small</div>
+          </div>
+          <div class="preset" data-preset="50">
+            <div class="size">50 sqm</div>
+            <div class="label">Medium</div>
+          </div>
+          <div class="preset" data-preset="100">
+            <div class="size">100 sqm</div>
+            <div class="label">Large</div>
+          </div>
+          <div class="preset" data-preset="150">
+            <div class="size">150 sqm</div>
+            <div class="label">XL</div>
+          </div>
+          <div class="preset" data-preset="175">
+            <div class="size">175 sqm</div>
+            <div class="label">XXL</div>
+          </div>
+          <div class="preset" data-preset="200">
+            <div class="size">200 sqm</div>
+            <div class="label">Max</div>
+          </div>
+        </div>
+        <div class="info-note">
+          <span class="icon">ℹ️</span>
+          <p>V1 supports block warehouses up to 200 sqm. Unsure of your size? Start with an estimate — you can adjust with the Cargo team.</p>
+        </div>
+      </div>
+
+      <div class="filter-bar filter-bar-spaced">
+        <div class="result-count"><strong>3 warehouses</strong> available <span id="listSubtitle">for your space</span></div>
+        <button class="sort-btn">Sort ▾</button>
+      </div>
+      
+      <!-- WH Card 1 -->
+      <div class="warehouse-card" data-warehouse-id="1">
+        <div class="wh-image">
+          <span class="wh-icon">🏭</span>
+          <span class="badge verified">✓ Verified</span>
+          <span class="avail-badge">320 sqm available</span>
+        </div>
+        <div class="wh-body">
+          <div class="wh-name">Al Quoz Industrial Block</div>
+          <div class="wh-location">📍 Al Quoz, Dubai</div>
+          <div class="wh-meta">
+            <div class="meta-chip"><span class="chip-icon">🔒</span>24/7 Security</div>
+            <div class="meta-chip"><span class="chip-icon">❄️</span>Ambient</div>
+            <div class="meta-chip"><span class="chip-icon">🚚</span>Loading Bay</div>
+          </div>
+          <div class="wh-footer">
+            <div class="wh-price">AED 18 <span>/ sqm / mo</span></div>
+            <div class="wh-rating">⭐ 4.8 <span style="color:var(--color-text-500);font-weight:400">(24)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WH Card 2 -->
+      <div class="warehouse-card" data-warehouse-id="2">
+        <div class="wh-image" style="background:linear-gradient(135deg,#3D2C6B,#1A1A2E)">
+          <span class="wh-icon">🏗️</span>
+          <span class="badge">Top Rated</span>
+          <span class="avail-badge">180 sqm available</span>
+        </div>
+        <div class="wh-body">
+          <div class="wh-name">SAIF Zone Logistics Park</div>
+          <div class="wh-location">📍 SAIF Zone, Sharjah</div>
+          <div class="wh-meta">
+            <div class="meta-chip"><span class="chip-icon">🔒</span>Security</div>
+            <div class="meta-chip"><span class="chip-icon">🚗</span>Parking</div>
+            <div class="meta-chip"><span class="chip-icon">📦</span>Racking</div>
+          </div>
+          <div class="wh-footer">
+            <div class="wh-price">AED 15 <span>/ sqm / mo</span></div>
+            <div class="wh-rating">⭐ 4.9 <span style="color:var(--color-text-500);font-weight:400">(41)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WH Card 3 -->
+      <div class="warehouse-card" data-warehouse-id="3">
+        <div class="wh-image" style="background:linear-gradient(135deg,#2C5E6B,#1A2E2E)">
+          <span class="wh-icon">🏢</span>
+          <span class="avail-badge">500 sqm available</span>
+        </div>
+        <div class="wh-body">
+          <div class="wh-name">Mussafah Industrial Zone</div>
+          <div class="wh-location">📍 Mussafah, Abu Dhabi</div>
+          <div class="wh-meta">
+            <div class="meta-chip"><span class="chip-icon">🔒</span>CCTV</div>
+            <div class="meta-chip"><span class="chip-icon">⚡</span>3-Phase Power</div>
+          </div>
+          <div class="wh-footer">
+            <div class="wh-price">AED 12 <span>/ sqm / mo</span></div>
+            <div class="wh-rating">⭐ 4.5 <span style="color:var(--color-text-500);font-weight:400">(17)</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SCREEN 2: Warehouse Detail -->
+  <div class="screen" id="screen2">
+    <div class="detail-hero">
+      <span class="hero-icon">🏭</span>
+      <div style="position:absolute;top:14px;left:14px;">
+        <button type="button" class="hero-back-btn" data-go-back="1">← Back</button>
+      </div>
+      <div class="hero-badges">
+        <span class="hero-badge green">✓ Verified</span>
+        <span class="hero-badge blue">⭐ Top Rated</span>
+      </div>
+    </div>
+    
+    <div class="detail-title-section">
+      <h2 id="detailName">Al Quoz Industrial Block</h2>
+      <div class="loc">📍 <span id="detailLoc">Al Quoz, Dubai</span></div>
+      <div class="rating-row">
+        <span class="stars">★★★★★</span>
+        <span class="rating-num">4.8</span>
+        <span class="rating-count">(24 reviews)</span>
+      </div>
+    </div>
+
+    <div class="content">
+      
+      <div class="card">
+        <div class="section-title">Space Availability</div>
+        <div class="specs-grid">
+          <div class="spec-item">
+            <div class="spec-val" id="detailAvail">320 sqm</div>
+            <div class="spec-key">Total Available</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-val" id="detailMin">10 sqm</div>
+            <div class="spec-key">Minimum Block</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-val" id="detailHeight">6m</div>
+            <div class="spec-key">Ceiling Height</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-val" id="detailPrice">AED 18</div>
+            <div class="spec-key">per sqm / month</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-title">What can be stored</div>
+        <div class="allowed-grid">
+          <div class="allowed-item">✅ Dry goods</div>
+          <div class="allowed-item">✅ Electronics</div>
+          <div class="allowed-item">✅ Furniture</div>
+          <div class="allowed-item">✅ Auto parts</div>
+          <div class="allowed-item no">🚫 Perishables</div>
+          <div class="allowed-item no">🚫 Chemicals</div>
+          <div class="allowed-item no">🚫 Flammables</div>
+          <div class="allowed-item no">🚫 Live goods</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-title">Facility Features</div>
+        <div class="wh-meta" style="flex-wrap:wrap;">
+          <div class="meta-chip">🔒 24/7 Security</div>
+          <div class="meta-chip">📸 CCTV</div>
+          <div class="meta-chip">🚚 Loading Bay</div>
+          <div class="meta-chip">🚗 Free Parking</div>
+          <div class="meta-chip">❄️ Ambient Temp</div>
+          <div class="meta-chip">📦 Pallet Racking</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-title">Customer Reviews</div>
+        <div class="review-item">
+          <div class="reviewer">
+            <div class="reviewer-avatar" style="background:#E94560">A</div>
+            <div>
+              <div class="reviewer-name">Ahmed Al Mansoori</div>
+              <div class="reviewer-date">⭐⭐⭐⭐⭐ · 2 weeks ago</div>
+            </div>
+          </div>
+          <div class="review-text">Excellent facility, very clean and well-organized. The loading dock made our move-in very smooth. Highly recommend for any SME.</div>
+        </div>
+        <div class="review-item">
+          <div class="reviewer">
+            <div class="reviewer-avatar" style="background:#3B82F6">R</div>
+            <div>
+              <div class="reviewer-name">Ravi Sharma</div>
+              <div class="reviewer-date">⭐⭐⭐⭐⭐ · 1 month ago</div>
+            </div>
+          </div>
+          <div class="review-text">Very professional team and great location. Security is top-notch. Access is easy and the booking process through Cargo was seamless.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sticky-footer">
+      <div class="price-row">
+        <div>
+          <div class="price-label">Estimated monthly cost</div>
+          <div class="price-val" id="detailTotal">AED 900 <span>/ mo</span></div>
+        </div>
+        <div style="font-size:var(--fs-xs);color:var(--color-text-500);text-align:right;">Based on<br><span id="detailSqm">50 sqm</span></div>
+      </div>
+      <button type="button" class="btn-primary" data-go-to="3">Select Move-in Date →</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 3: Date Selection -->
+  <div class="screen" id="screen3">
+    <div class="nav-bar">
+      <button type="button" class="back-btn" data-go-back="2">← Back</button>
+      <h1>Select Move-in Date</h1>
+      <p>Available within the next 15 days</p>
+    </div>
+    <div class="progress-dots">
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot active"></div>
+    </div>
+    <div class="content" style="padding-top:16px;">
+      
+      <div class="calendar-wrap">
+        <div class="cal-header">
+          <button class="cal-month-nav">‹</button>
+          <h3 id="calMonthLabel">March 2026</h3>
+          <button class="cal-month-nav">›</button>
+        </div>
+        <div class="cal-weekdays">
+          <div class="cal-weekday">Su</div>
+          <div class="cal-weekday">Mo</div>
+          <div class="cal-weekday">Tu</div>
+          <div class="cal-weekday">We</div>
+          <div class="cal-weekday">Th</div>
+          <div class="cal-weekday">Fr</div>
+          <div class="cal-weekday">Sa</div>
+        </div>
+        <div class="cal-days" id="calDays"></div>
+        <div class="date-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:var(--color-primary-500)"></div> Selected</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#eee"></div> Unavailable</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--color-green-500)"></div> Available</div>
+        </div>
+      </div>
+
+      <div class="info-note" id="dateWarning" style="display:none;">
+        <span class="icon">⚠️</span>
+        <p style="color:#A00">Move-in date must be within the next 15 days. Please contact the Cargo team to arrange a later date.</p>
+      </div>
+
+      <div class="card" id="selectedDateCard" style="display:none;">
+        <div class="section-title">Selected Date</div>
+        <div style="font-size:var(--fs-2xl);font-weight:var(--fw-extrabold);color:var(--color-text-900);" id="selectedDateDisplay">—</div>
+        <div style="font-size:var(--fs-sm);color:var(--color-text-500);margin-top:var(--sp-1);">Move-in confirmed for this date</div>
+      </div>
+
+      <button type="button" class="btn-primary" id="confirmDateBtn" disabled data-go-duration>Choose Duration →</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 4: Duration Selection -->
+  <div class="screen" id="screen4">
+    <div class="nav-bar">
+      <button type="button" class="back-btn" data-go-back="3">← Back</button>
+      <h1>Select Duration</h1>
+      <p>How long do you need the space?</p>
+    </div>
+    <div class="progress-dots">
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot active"></div>
+    </div>
+    <div class="content" style="padding-top:16px;">
+
+      <div class="card" style="margin-bottom:16px;">
+        <div class="section-title" style="margin-bottom:12px;">Choose your rental period</div>
+        <div class="duration-grid">
+          <div class="duration-card" data-duration="1">
+            <div class="dur-num">1</div>
+            <div class="dur-unit">Month</div>
+          </div>
+          <div class="duration-card" data-duration="2">
+            <div class="dur-num">2</div>
+            <div class="dur-unit">Months</div>
+          </div>
+          <div class="duration-card" data-duration="3">
+            <div class="dur-num">3</div>
+            <div class="dur-unit">Months</div>
+            <div class="dur-discount">5% off</div>
+          </div>
+          <div class="duration-card" data-duration="4">
+            <div class="dur-num">4</div>
+            <div class="dur-unit">Months</div>
+            <div class="dur-discount">8% off</div>
+          </div>
+          <div class="duration-card" data-duration="5">
+            <div class="dur-num">5</div>
+            <div class="dur-unit">Months</div>
+            <div class="dur-discount">10% off</div>
+          </div>
+          <div class="duration-card" data-duration="6">
+            <div class="dur-num">6</div>
+            <div class="dur-unit">Months</div>
+            <div class="dur-discount">12% off</div>
+          </div>
+        </div>
+        <div class="info-note" style="margin-bottom:0;">
+          <span class="icon">💡</span>
+          <p>Longer commitments unlock better rates. You can always extend after your period ends.</p>
+        </div>
+      </div>
+
+      <div class="price-preview" id="pricePreview">
+        <div class="section-title" style="margin-bottom:10px;">Price Breakdown</div>
+        <div class="pp-row">
+          <span class="pp-key">Space</span>
+          <span class="pp-val" id="ppSpace">50 sqm</span>
+        </div>
+        <div class="pp-row">
+          <span class="pp-key">Rate</span>
+          <span class="pp-val" id="ppRate">AED 18 / sqm / mo</span>
+        </div>
+        <div class="pp-row">
+          <span class="pp-key">Duration</span>
+          <span class="pp-val" id="ppDuration">1 month</span>
+        </div>
+        <div class="pp-row" id="ppDiscountRow" style="display:none;">
+          <span class="pp-key">Discount</span>
+          <span class="pp-val" id="ppDiscount" style="color:var(--color-green-500);">—</span>
+        </div>
+        <div class="pp-total-row">
+          <span class="pp-total-label">Total Payable</span>
+          <span class="pp-total-val" id="ppTotal">AED 900</span>
+        </div>
+        <div class="pp-savings" id="ppSavings" style="display:none;">
+          🎉 <span id="ppSavingsText">You save AED 0</span>
+        </div>
+      </div>
+
+      <button type="button" class="btn-primary" id="confirmDurationBtn" disabled data-go-duration-summary>Continue to Summary →</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 5: Booking Summary -->
+  <div class="screen" id="screen5">
+    <div class="nav-bar">
+      <button type="button" class="back-btn" data-go-back="4">← Back</button>
+      <h1>Booking Summary</h1>
+      <p>Review before confirming</p>
+    </div>
+    <div class="progress-dots">
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+      <div class="dot done"></div>
+    </div>
+    <div class="content" style="padding-top:16px;">
+      
+      <div class="card">
+        <div class="section-title">Warehouse</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-size:var(--fs-lg);font-weight:var(--fw-bold);color:var(--color-text-900);" id="summaryWHName">Al Quoz Industrial Block</div>
+            <div style="font-size:var(--fs-sm);color:var(--color-text-500);margin-top:var(--sp-1);" id="summaryWHLoc">📍 Al Quoz, Dubai</div>
+          </div>
+          <div style="font-size:28px">🏭</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-title">Booking Details</div>
+        <div class="line-items">
+          <div class="line-item">
+            <span class="li-label">Space Required</span>
+            <span class="li-val" id="summarySpace">50 sqm</span>
+          </div>
+          <div class="line-item">
+            <span class="li-label">Move-in Date</span>
+            <span class="li-val" id="summaryDate">—</span>
+          </div>
+          <div class="line-item">
+            <span class="li-label">Duration</span>
+            <span class="li-val" id="summaryDuration">1 Month</span>
+          </div>
+          <div class="line-item">
+            <span class="li-label">Rate</span>
+            <span class="li-val" id="summaryRate">AED 18/sqm/mo</span>
+          </div>
+          <div class="line-item" id="summaryDiscountRow" style="display:none;">
+            <span class="li-label">Discount</span>
+            <span class="li-val" id="summaryDiscount" style="color:var(--color-green-500);">—</span>
+          </div>
+          <div class="line-item total">
+            <span class="li-label">Total Payable</span>
+            <span class="li-val" id="summaryTotal">AED 900</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="terms-note">
+        By confirming, you agree to Cargo's standard storage terms. A proforma invoice will be generated and sent to your WhatsApp. Payment instructions will follow from our team.
+      </div>
+
+      <button type="button" class="btn-primary" data-confirm-booking>Confirm & Generate Invoice →</button>
+    </div>
+  </div>
+
+  <!-- SCREEN 6: Success -->
+  <div class="screen" id="screen6">
+    <div class="success-hero">
+      <div class="success-icon">✓</div>
+      <h2>Booking Confirmed!</h2>
+      <p>Your proforma invoice has been generated and sent to your WhatsApp.</p>
+    </div>
+    <div class="content" style="padding-top:16px;">
+      
+      <div class="wa-note">
+        <span class="wa-icon">💬</span>
+        <p>Invoice sent to your WhatsApp. Our team will contact you shortly with payment instructions.</p>
+      </div>
+
+      <div class="invoice-card">
+        <div class="invoice-header">
+          <div>
+            <div class="inv-label">PROFORMA INVOICE</div>
+            <div class="inv-num" id="invNum">#PI-2026-00847</div>
+          </div>
+          <div class="inv-status">PENDING PAYMENT</div>
+        </div>
+        <div class="invoice-body">
+          <div class="inv-row">
+            <span class="inv-key">Warehouse</span>
+            <span class="inv-val" id="invWH">Al Quoz Industrial Block</span>
+          </div>
+          <div class="inv-row">
+            <span class="inv-key">Space</span>
+            <span class="inv-val" id="invSpace">50 sqm</span>
+          </div>
+          <div class="inv-row">
+            <span class="inv-key">Move-in Date</span>
+            <span class="inv-val" id="invDate">—</span>
+          </div>
+          <div class="inv-row">
+            <span class="inv-key">Duration</span>
+            <span class="inv-val" id="invDuration">1 Month</span>
+          </div>
+          <div class="inv-row">
+            <span class="inv-key">Rate</span>
+            <span class="inv-val" id="invRate">AED 18/sqm/mo</span>
+          </div>
+          <div class="inv-total-row">
+            <span>Total Due</span>
+            <span class="inv-total-val" id="invTotal">AED 900</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card invoice-expiry-card">
+        <div style="font-size:var(--fs-sm);font-weight:var(--fw-bold);color:var(--color-alert-text);margin-bottom:var(--sp-2);">⏱ Invoice Valid for 24 Hours</div>
+        <div style="font-size:var(--fs-xs);color:var(--color-alert-text);line-height:var(--lh-normal);">Payment must be initiated within 24 hours to secure your space. If no payment is received, our team will follow up and the invoice will expire.</div>
+      </div>
+
+      <button type="button" class="btn-primary btn-download-invoice" data-demo-download>⬇ Download Invoice</button>
+      <button type="button" class="btn-secondary" data-demo-share>💬 Share on WhatsApp</button>
+
+    </div>
+  </div>
+
+  <!-- SCREEN 7: Journey Termination -->
+  <div class="screen" id="screen7">
+    <div class="nav-bar">
+      <button type="button" class="back-btn" data-go-back="3">← Back</button>
+      <h1>Date Unavailable</h1>
+    </div>
+    <div class="term-screen">
+      <div class="term-icon">📅</div>
+      <h2>Move-in Date Out of Range</h2>
+      <p>We currently only accept move-in dates within the next <strong>15 days</strong>.<br><br>For a later move-in date or special arrangements, please contact our Cargo support team directly.</p>
+      <button class="call-btn">📞 Call Cargo Support</button>
+      <button type="button" class="btn-secondary" data-go-to="3">← Choose Different Date</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="demo-hint" id="demoHint">Select space, tap a warehouse, or use buttons to navigate</div>
+
+<script src="js/warehouse-booking.js" defer></script>
+</body>
+</html>

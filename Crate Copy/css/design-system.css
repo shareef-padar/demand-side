@@ -1,0 +1,12 @@
+/**
+ * Design System CSS - standalone (no Tailwind required)
+ * Import this if your project doesn't use Tailwind.
+ *
+ * If using Tailwind, import app.css instead which includes Tailwind + design system.
+ */
+@import "./variables.css";
+@import "./reset.css";
+@import "./base.css";
+@import "./utilities.css";
+@import "./animations.css";
+@import "./components.css";

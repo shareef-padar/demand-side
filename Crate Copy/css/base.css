@@ -1,0 +1,94 @@
+html, body {
+    height: 100%;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    line-height: var(--lh-normal);
+    color: var(--color-text-900);
+    background-color: var(--color-white);
+    overscroll-behavior: none;
+}
+
+/* Accessible focus indicators for keyboard navigation */
+:focus-visible {
+    outline: 0.125rem solid var(--color-primary-500);
+    outline-offset: 0.125rem;
+}
+
+#app {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    max-width: 26.875rem;
+    margin: 0 auto;
+    overflow-x: hidden;
+    background-color: var(--color-white);
+}
+
+.skip-link {
+    position: absolute;
+    top: -6.25rem;
+    left: var(--sp-4);
+    padding: var(--sp-2) var(--sp-4);
+    background: var(--color-primary-500);
+    color: var(--color-white);
+    font-weight: var(--fw-semibold);
+    border-radius: var(--radius-md);
+    z-index: 9999;
+    transition: top 0.2s;
+}
+.skip-link:focus {
+    top: var(--sp-4);
+    outline: 0.125rem solid var(--color-primary-600);
+    outline-offset: 0.125rem;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--color-white);
+    position: relative;
+}
+
+.app-content-area {
+    flex: 1;
+    background-color: var(--color-white);
+    border-radius: 0 0 1.5rem 1.5rem;
+    overflow: hidden;
+}
+
+body.sheet-open {
+    overflow: hidden;
+    touch-action: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
+}
+
+h1 { font-size: var(--fs-4xl); }
+h2 { font-size: var(--fs-3xl); }
+h3 { font-size: var(--fs-2xl); }
+h4 { font-size: var(--fs-xl); }
+h5 { font-size: var(--fs-lg); }
+h6 { font-size: var(--fs-md); }
+
+p {
+    line-height: var(--lh-relaxed);
+}
+
+strong, b {
+    font-weight: var(--fw-bold);
+}
+
+.app-screen {
+    padding-bottom: calc(5rem + var(--safe-bottom));
+    background-color: var(--color-white);
+}
+
+.screen-content {
+    padding: var(--sp-4);
+    background-color: var(--color-white);
+    min-width: 0;
+}

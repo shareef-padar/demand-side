@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { MapPin, Star, ShieldCheck, Hourglass, Prohibit, Package } from '@phosphor-icons/react';
+import { MapPin, Star, ShieldCheck, Hourglass, Prohibit, Package, Camera, Flame, Truck, Clock } from '@phosphor-icons/react';
 import BackButton from '../components/BackButton.jsx';
 import SarCurrency from '../components/SarCurrency.jsx';
 import ExpandablePriceFooter from '../components/ExpandablePriceFooter.jsx';
@@ -27,16 +27,25 @@ const ACCESS_HOURS = [
   { days: 'Saturday - Sunday', status: 'Open', hours: '9:00 AM - 2:00 PM', open: true },
 ];
 
-const AMENITIES = ['SFDA Approved', '24/7 CCTV', 'Fire Safety AMC', 'Civil Defence Approved'];
-
-const SERVICES = [
-  { label: 'Loading & Unloading', sub: 'from SAR 8.00/pallet' },
-  { label: 'Cross Docking', sub: 'from SAR 5.00/box' },
-  { label: 'Inventory Management', sub: 'from SAR 300.00/month' },
-  { label: '24/7 Access', sub: 'Included in plan' },
+const AMENITIES = [
+  { label: 'SFDA Approved', icon: ShieldCheck },
+  { label: '24/7 CCTV', icon: Camera },
+  { label: 'Fire Safety AMC', icon: Flame },
+  { label: 'Civil Defence Approved', icon: ShieldCheck },
 ];
 
-const EQUIPMENT = ['Forklift', 'Jack Trolley', 'Jack Trolley'];
+const SERVICES = [
+  { label: 'Loading & Unloading', sub: 'from SAR 8.00/pallet', icon: Truck },
+  { label: 'Cross Docking', sub: 'from SAR 5.00/box', icon: Package },
+  { label: 'Inventory Management', sub: 'from SAR 300.00/month', icon: Package },
+  { label: '24/7 Access', sub: 'Included in plan', icon: Clock },
+];
+
+const EQUIPMENT = [
+  { label: 'Forklift', icon: Truck },
+  { label: 'Jack Trolley', icon: Package },
+  { label: 'Jack Trolley', icon: Package },
+];
 
 const PROHIBITED = [
   'Toxic and radioactive matters',
@@ -47,7 +56,8 @@ const PROHIBITED = [
 
 const TERMS = 'Lorem ipsum dolor sit amet consectetur. Ante consectetur nunc fusce enim dui ultrices vitae turpis. Semper arcu odio aliquet tincidunt scelerisque sit eu lorem. Ultrices egestas arcu convallis fames congue. Et porttitor posuere aliquam at.';
 
-const REVIEW_META = ['Stored 3 months', 'Stored 1 months', 'Stored 1 months', 'Stored 1 months', 'Stored 1 months'];
+const REVIEW_META = ['Stored 3 months', 'Stored 1 month', 'Stored 6 months', 'Stored 2 months', 'Stored 1 year', 'Stored 8 months', 'Stored 4 months'];
+const REVIEW_DATES = ['1 week ago', '2 weeks ago', '3 days ago', '1 month ago', '2 months ago', '5 days ago', '3 weeks ago'];
 
 export default function Screen2() {
   const { selectedSqm, selectedWarehouse, selectedWarehouseId, goTo } = useBooking();
@@ -280,14 +290,17 @@ export default function Screen2() {
                   <div className="detail-subblock">
                     <h4 className="detail-subtitle-amenities">Amenities</h4>
                     <div className="detail-amenity-list">
-                      {AMENITIES.map((label) => (
-                        <div key={label} className="detail-amenity-item">
-                          <div className="detail-amenity-icon">
-                            <Package size={20} weight="regular" />
+                      {AMENITIES.map((item) => {
+                        const Icon = item.icon;
+                        return (
+                          <div key={item.label} className="detail-amenity-item">
+                            <div className="detail-amenity-icon">
+                              <Icon size={20} weight="regular" />
+                            </div>
+                            <span className="detail-amenity-label">{item.label}</span>
                           </div>
-                          <span className="detail-amenity-label">{label}</span>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                     <button type="button" className="detail-show-all">Show All</button>
                   </div>
@@ -300,30 +313,36 @@ export default function Screen2() {
                   <div className="detail-subblock">
                     <h4 className="detail-subtitle">Services</h4>
                     <div className="detail-service-list">
-                      {SERVICES.map((s) => (
+                      {SERVICES.map((s) => {
+                        const Icon = s.icon;
+                        return (
                         <div key={s.label} className="detail-service-item">
                           <div className="detail-amenity-icon">
-                            <Package size={20} weight="regular" />
+                            <Icon size={20} weight="regular" />
                           </div>
                           <div className="detail-service-content">
                             <span className="detail-service-label">{s.label}</span>
                             <span className="detail-service-sub">{s.sub}</span>
                           </div>
                         </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
                   <div className="detail-subblock">
                     <h4 className="detail-subtitle">Equipment</h4>
                     <div className="detail-amenity-list">
-                      {EQUIPMENT.map((label, i) => (
-                        <div key={`${label}-${i}`} className="detail-amenity-item">
-                          <div className="detail-amenity-icon">
-                            <Package size={20} weight="regular" />
+                      {EQUIPMENT.map((item, i) => {
+                        const Icon = item.icon;
+                        return (
+                          <div key={`${item.label}-${i}`} className="detail-amenity-item">
+                            <div className="detail-amenity-icon">
+                              <Icon size={20} weight="regular" />
+                            </div>
+                            <span className="detail-amenity-label">{item.label}</span>
                           </div>
-                          <span className="detail-amenity-label">{label}</span>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -374,7 +393,7 @@ export default function Screen2() {
                             ))}
                           </span>
                           <span className="detail-review-dot" />
-                          <span className="detail-review-date">1 week ago</span>
+                          <span className="detail-review-date">{REVIEW_DATES[i % REVIEW_DATES.length]}</span>
                         </div>
                         <div className="detail-review-text">{r.text}</div>
                       </div>

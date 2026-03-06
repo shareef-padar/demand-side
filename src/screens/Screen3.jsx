@@ -65,7 +65,7 @@ export default function Screen3() {
 
   return (
     <div className="screen active">
-      <div className="flex items-start gap-3 px-5 pt-4 pb-2">
+      <div className="flex items-start gap-3 px-4 pt-4 pb-2">
         <BackButton onClick={() => goTo(2)} />
         <div>
           <h1 className="text-xl font-bold text-[var(--color-text-900)] leading-tight">Select Date & Duration</h1>
@@ -124,7 +124,7 @@ export default function Screen3() {
         className="fixed left-0 right-0 z-40 flex justify-center px-4"
         style={{ bottom: 'calc(80px + 8px + env(safe-area-inset-bottom, 0px))' }}
       >
-        <div className="w-full max-w-[calc(100%-2rem)] flex gap-4 py-4 rounded-2xl bg-white" style={{ paddingLeft: '24px', paddingRight: '24px' }}>
+        <div className="w-full max-w-[calc(100%-2rem)] flex gap-4 py-4 rounded-2xl bg-white" style={{ paddingLeft: '16px', paddingRight: '16px' }}>
           <div className="flex flex-1 flex-col gap-0.5 min-w-0">
             <span className="text-xs font-medium text-[var(--color-text-500)]">Start date</span>
             <span className="text-sm font-bold text-[var(--color-text-900)] truncate">

@@ -265,7 +265,7 @@ export default function Screen2() {
             </div>
 
             {/* SECTIONS */}
-            <div className="p-4 space-y-10">
+            <div className="py-4 px-0 space-y-10">
 
               <div ref={(el) => { sectionRefs.current['overview'] = el; }} id="overview" className="scroll-mt-24">
                 <h3 className="text-2xl font-bold mb-6">Overview</h3>

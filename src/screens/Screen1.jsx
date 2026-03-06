@@ -32,8 +32,9 @@ export default function Screen1() {
     if (!isNaN(val) && val >= 1 && val <= MAX_SQM) setSqm(val);
   }, [setSqm]);
 
-  const increment = useCallback(() => setSqm((s) => Math.min(MAX_SQM, s + STEP)), [setSqm]);
-  const decrement = useCallback(() => setSqm((s) => Math.max(1, s - STEP)), [setSqm]);
+  const safeSqm = typeof selectedSqm === 'number' && !isNaN(selectedSqm) ? selectedSqm : 40;
+  const increment = useCallback(() => setSqm(Math.min(MAX_SQM, safeSqm + STEP)), [setSqm, safeSqm]);
+  const decrement = useCallback(() => setSqm(Math.max(1, safeSqm - STEP)), [setSqm, safeSqm]);
 
   const selectWarehouse = useCallback((id) => {
     setWarehouse(id);
@@ -45,8 +46,8 @@ export default function Screen1() {
     setSortSheetOpen(false);
   }, []);
 
-  const parkingLots = Math.round(selectedSqm / SQM_PER_PARKING_LOT);
-  const formattedSqm = selectedSqm.toLocaleString();
+  const parkingLots = Math.round(safeSqm / SQM_PER_PARKING_LOT);
+  const formattedSqm = safeSqm.toLocaleString();
 
   const sortedWarehouseEntries = useMemo(() => {
     const entries = Object.entries(WAREHOUSES);
@@ -118,7 +119,7 @@ export default function Screen1() {
         </div>
 
         <div className="filter-bar filter-bar-spaced">
-          <div className="result-count"><strong>3 warehouses</strong> available <span>for {selectedSqm} sqm</span></div>
+          <div className="result-count"><strong>3 warehouses</strong> available <span>for {safeSqm} sqm</span></div>
           <button type="button" className="sort-btn" aria-label="Sort warehouses" onClick={() => setSortSheetOpen(true)} aria-expanded={sortSheetOpen}>
             Sort ▾
           </button>
@@ -130,7 +131,7 @@ export default function Screen1() {
               key={id}
               warehouse={wh}
               warehouseId={id}
-              selectedSqm={selectedSqm}
+              selectedSqm={safeSqm}
               onClick={selectWarehouse}
             />
           ))}

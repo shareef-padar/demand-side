@@ -59,8 +59,12 @@ function bookingReducer(state, action) {
       return { ...state, currentScreen: action.screen };
     case 'SET_PRESET':
       return { ...state, selectedSqm: action.value, selectedPreset: action.value };
-    case 'SET_SQM':
-      return { ...state, selectedSqm: action.value, selectedPreset: action.value };
+    case 'SET_SQM': {
+      const current = Number(state.selectedSqm) || 40;
+      const v = typeof action.value === 'function' ? action.value(current) : action.value;
+      const num = Math.max(1, Math.min(2000, Number(v) || current));
+      return { ...state, selectedSqm: num, selectedPreset: num };
+    }
     case 'SET_WAREHOUSE':
       return { ...state, selectedWarehouseId: action.id };
     case 'SET_DATE':

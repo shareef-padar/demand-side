@@ -214,10 +214,10 @@ body {
   min-width: 0;
 }
 
-/* Card overrides for phone-frame (Crate .card is base) - no horizontal padding, content provides 16px */
+/* Card overrides for phone-frame (Crate .card is base) - 16px padding on all sides */
 .phone-frame .card {
   border-radius: var(--radius-xl);
-  padding: var(--sp-5) 0;
+  padding: var(--sp-4);
   margin-bottom: var(--sp-3);
   min-width: 0;
   overflow: hidden;
